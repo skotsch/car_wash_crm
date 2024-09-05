@@ -1,40 +1,50 @@
-<!-- resources/views/clients/create.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Client</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Create Client</h1>
-        <form action="{{ route('clients.store') }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" name="last_name" class="form-control">
+@extends('layouts.adminlte')
+
+@section('content')
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Создать клиента</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form action="{{ route('clients.store') }}" method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="last_name">Фамилия</label>
+                                <input type="text" name="last_name" class="form-control" id="last_name" placeholder="Введите фамилию">
+                            </div>
+                            <div class="form-group">
+                                <label for="first_name">Имя</label>
+                                <input type="text" name="first_name" class="form-control" id="first_name" placeholder="Введите имя">
+                            </div>
+                            <div class="form-group">
+                                <label for="middle_name">Отчество</label>
+                                <input type="text" name="middle_name" class="form-control" id="middle_name" placeholder="Введите отчество">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="text" name="phone" class="form-control" id="phone" placeholder="Введите телефон">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Введите email">
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Создать</button>
+                            <a href="{{ route('clients.index') }}" class="btn btn-secondary">Назад</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" name="first_name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="middle_name">Middle Name</label>
-                <input type="text" name="middle_name" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="text" name="phone" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary">Create</button>
-        </form>
+        </div>
     </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-</body>
-</html>
+</section>
+@endsection
