@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $fillable = [
-        'last_name', 'first_name', 'middle_name', 'phone', 'email', 'position',
+        'last_name', 'first_name', 'patronymic', 'phone', 'email', 'position',
     ];
 
     public function orders()

@@ -2,63 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('services.index', compact('services'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('services.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'nullable',
+        ]);
+
+        Service::create($validatedData);
+
+        return redirect()->route('services.index')->with('success', 'Услуга успешно создана.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Service $service)
     {
-        //
+        return view('services.show', compact('service'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Service $service)
     {
-        //
+        return view('services.edit', compact('service'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Service $service)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'description' => 'nullable',
+        ]);
+
+        $service->update($validatedData);
+
+        return redirect()->route('services.index')->with('success', 'Услуга успешно обновлена.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Service $service)
     {
-        //
+        $service->delete();
+
+        return redirect()->route('services.index')->with('success', 'Услуга успешно удалена.');
     }
 }

@@ -2,63 +2,65 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $transactions = Transaction::all();
+        return view('transactions.index', compact('transactions'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $orders = Order::all();
+        return view('transactions.create', compact('orders'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'amount' => 'required|numeric',
+            'payment_method' => 'required',
+        ]);
+
+        Transaction::create($validatedData);
+
+        return redirect()->route('transactions.index')->with('success', 'Транзакция успешно создана.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Transaction $transaction)
     {
-        //
+        return view('transactions.show', compact('transaction'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Transaction $transaction)
     {
-        //
+        $orders = Order::all();
+        return view('transactions.edit', compact('transaction', 'orders'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Transaction $transaction)
     {
-        //
+        $validatedData = $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'amount' => 'required|numeric',
+            'payment_method' => 'required',
+        ]);
+
+        $transaction->update($validatedData);
+
+        return redirect()->route('transactions.index')->with('success', 'Транзакция успешно обновлена.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->delete();
+
+        return redirect()->route('transactions.index')->with('success', 'Транзакция успешно удалена.');
     }
 }

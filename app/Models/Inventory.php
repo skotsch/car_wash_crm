@@ -10,4 +10,6 @@ class Inventory extends Model
     protected $fillable = [
         'name', 'description', 'type', 'price',
     ];
+
+    protected $table = 'inventory';
 }
