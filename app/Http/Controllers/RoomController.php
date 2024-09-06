@@ -52,6 +52,10 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
+        if ($room->hasOrders()) {
+            return redirect()->route('rooms.index')->with('error', 'Невозможно удалить помещение, так как на него есть ссылки в заказах.');
+        }
+
         $room->delete();
 
         return redirect()->route('rooms.index')->with('success', 'Комната успешно удалена.');

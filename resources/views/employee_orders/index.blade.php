@@ -1,3 +1,5 @@
+<!-- resources/views/employee_orders/index.blade.php -->
+
 @extends('layouts.adminlte')
 
 @section('content')
@@ -7,19 +9,19 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Связь сотрудников с заказами</h3>
+                        <h3 class="card-title">Employee Orders</h3>
                         <div class="card-tools">
-                            <a href="{{ route('employee_order.create') }}" class="btn btn-primary">Создать связь</a>
+                            <a href="{{ route('employee_orders.create') }}" class="btn btn-primary">Создать Employee Order</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="employeeOrderTable" class="table table-bordered table-hover">
+                        <table id="employeeOrdersTable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Сотрудник</th>
-                                    <th>Заказ</th>
+                                    <th>Employee ID</th>
+                                    <th>Order ID</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -27,11 +29,15 @@
                                 @foreach($employeeOrders as $employeeOrder)
                                     <tr>
                                         <td>{{ $employeeOrder->id }}</td>
-                                        <td>{{ $employeeOrder->employee->last_name }} {{ $employeeOrder->employee->first_name }}</td>
-                                        <td>{{ $employeeOrder->order->id }}</td>
                                         <td>
-                                            <a href="{{ route('employee_order.show', $employeeOrder->id) }}" class="btn btn-info">Просмотр</a>
-                                            <a href="{{ route('employee_order.edit', $employeeOrder->id) }}" class="btn btn-warning">Редактировать</a>
+                                            <a href="{{ route('employees.show', $employeeOrder->employee_id) }}">{{ $employeeOrder->employee_id }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('orders.show', $employeeOrder->order_id) }}">{{ $employeeOrder->order_id }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('employee_orders.show', $employeeOrder->id) }}" class="btn btn-info">Просмотр</a>
+                                            <a href="{{ route('employee_orders.edit', $employeeOrder->id) }}" class="btn btn-warning">Редактировать</a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $employeeOrder->id }}">Удалить</button>
                                         </td>
                                     </tr>
@@ -40,8 +46,8 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Сотрудник</th>
-                                    <th>Заказ</th>
+                                    <th>Employee ID</th>
+                                    <th>Order ID</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>
@@ -67,11 +73,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Вы уверены, что хотите удалить связь сотрудника с заказом {{ $employeeOrder->id }}?
+                Вы уверены, что хотите удалить Employee Order {{ $employeeOrder->id }}?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                <form action="{{ route('employee_order.destroy', $employeeOrder->id) }}" method="POST" style="display: inline;">
+                <form action="{{ route('employee_orders.destroy', $employeeOrder->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Удалить</button>

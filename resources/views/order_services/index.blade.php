@@ -1,3 +1,5 @@
+<!-- resources/views/order_services/index.blade.php -->
+
 @extends('layouts.adminlte')
 
 @section('content')
@@ -7,44 +9,36 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Заказы</h3>
+                        <h3 class="card-title">Order Services</h3>
                         <div class="card-tools">
-                            <a href="{{ route('orders.create') }}" class="btn btn-primary">Создать заказ</a>
+                            <a href="{{ route('order_services.create') }}" class="btn btn-primary">Создать Order Service</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="ordersTable" class="table table-bordered table-hover">
+                        <table id="orderServicesTable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Статус</th>
-                                    <th>Время заказа</th>
-                                    <th>Клиент</th>
-                                    <th>Комната</th>
-                                    <th>Услуги</th>
+                                    <th>Order ID</th>
+                                    <th>Service ID</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($orders as $order)
+                                @foreach($orderServices as $orderService)
                                     <tr>
-                                        <td>{{ $order->id }}</td>
-                                        <td>{{ $order->status }}</td>
-                                        <td>{{ $order->order_time }}</td>
-                                        <td>{{ $order->client->last_name }} {{ $order->client->first_name }}</td>
-                                        <td>{{ $order->room->address }}</td>
+                                        <td>{{ $orderService->id }}</td>
                                         <td>
-                                            <ul>
-                                                @foreach($order->services as $service)
-                                                    <li>{{ $service->name }}</li>
-                                                @endforeach
-                                            </ul>
+                                            <a href="{{ route('orders.show', $orderService->order_id) }}">{{ $orderService->order_id }}</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">Просмотр</a>
-                                            <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Редактировать</a>
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $order->id }}">Удалить</button>
+                                            <a href="{{ route('services.show', $orderService->service_id) }}">{{ $orderService->service->name }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('order_services.show', $orderService->id) }}" class="btn btn-info">Просмотр</a>
+                                            <a href="{{ route('order_services.edit', $orderService->id) }}" class="btn btn-warning">Редактировать</a>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $orderService->id }}">Удалить</button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -52,11 +46,8 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Статус</th>
-                                    <th>Время заказа</th>
-                                    <th>Клиент</th>
-                                    <th>Комната</th>
-                                    <th>Услуги</th>
+                                    <th>Order ID</th>
+                                    <th>Service ID</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>
@@ -71,22 +62,22 @@
 </section>
 
 <!-- Delete Modal -->
-@foreach($orders as $order)
-<div class="modal fade" id="deleteModal{{ $order->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $order->id }}" aria-hidden="true">
+@foreach($orderServices as $orderService)
+<div class="modal fade" id="deleteModal{{ $orderService->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{ $orderService->id }}" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="deleteModalLabel{{ $order->id }}">Подтверждение удаления</h5>
+                <h5 class="modal-title" id="deleteModalLabel{{ $orderService->id }}">Подтверждение удаления</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Вы уверены, что хотите удалить заказ {{ $order->id }}?
+                Вы уверены, что хотите удалить Order Service {{ $orderService->id }}?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display: inline;">
+                <form action="{{ route('order_services.destroy', $orderService->id) }}" method="POST" style="display: inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Удалить</button>

@@ -1,3 +1,5 @@
+<!-- resources/views/rooms/index.blade.php -->
+
 @extends('layouts.adminlte')
 
 @section('content')
@@ -9,11 +11,21 @@
                     <div class="card-header">
                         <h3 class="card-title">Помещения</h3>
                         <div class="card-tools">
-                            <a href="{{ route('rooms.create') }}" class="btn btn-primary">Добавить адрес</a>
+                            <a href="{{ route('rooms.create') }}" class="btn btn-primary">Создать помещение</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         <table id="roomsTable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -28,7 +40,6 @@
                                         <td>{{ $room->id }}</td>
                                         <td>{{ $room->address }}</td>
                                         <td>
-                                            <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-info">Просмотр</a>
                                             <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-warning">Редактировать</a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $room->id }}">Удалить</button>
                                         </td>
@@ -64,7 +75,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Вы уверены, что хотите удалить комнату с адресом {{ $room->address }}?
+                Вы уверены, что хотите удалить помещение {{ $room->id }}?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>

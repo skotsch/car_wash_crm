@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('status');
             $table->timestamp('order_time');
-            $table->foreignId('client_id')->constrained('clients');
-            $table->foreignId('room_id')->constrained('rooms');
+            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
             $table->timestamps();
         });
     }

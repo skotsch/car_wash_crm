@@ -12,14 +12,14 @@ class EmployeeOrderController extends Controller
     public function index()
     {
         $employeeOrders = EmployeeOrder::all();
-        return view('employee_order.index', compact('employeeOrders'));
+        return view('employee_orders.index', compact('employeeOrders'));
     }
 
     public function create()
     {
         $employees = Employee::all();
         $orders = Order::all();
-        return view('employee_order.create', compact('employees', 'orders'));
+        return view('employee_orders.create', compact('employees', 'orders'));
     }
 
     public function store(Request $request)
@@ -31,19 +31,19 @@ class EmployeeOrderController extends Controller
 
         EmployeeOrder::create($validatedData);
 
-        return redirect()->route('employee_order.index')->with('success', 'Связь сотрудника с заказом успешно создана.');
+        return redirect()->route('employee_orders.index')->with('success', 'EmployeeOrder успешно создан.');
     }
 
     public function show(EmployeeOrder $employeeOrder)
     {
-        return view('employee_order.show', compact('employeeOrder'));
+        return view('employee_orders.show', compact('employeeOrder'));
     }
 
     public function edit(EmployeeOrder $employeeOrder)
     {
         $employees = Employee::all();
         $orders = Order::all();
-        return view('employee_order.edit', compact('employeeOrder', 'employees', 'orders'));
+        return view('employee_orders.edit', compact('employeeOrder', 'employees', 'orders'));
     }
 
     public function update(Request $request, EmployeeOrder $employeeOrder)
@@ -55,13 +55,13 @@ class EmployeeOrderController extends Controller
 
         $employeeOrder->update($validatedData);
 
-        return redirect()->route('employee_order.index')->with('success', 'Связь сотрудника с заказом успешно обновлена.');
+        return redirect()->route('employee_orders.index')->with('success', 'EmployeeOrder успешно обновлен.');
     }
 
     public function destroy(EmployeeOrder $employeeOrder)
     {
         $employeeOrder->delete();
 
-        return redirect()->route('employee_order.index')->with('success', 'Связь сотрудника с заказом успешно удалена.');
+        return redirect()->route('employee_orders.index')->with('success', 'EmployeeOrder успешно удален.');
     }
 }
