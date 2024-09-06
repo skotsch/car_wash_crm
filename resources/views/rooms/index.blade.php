@@ -26,7 +26,7 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <table id="roomsTable" class="table table-bordered table-hover">
+                        <table id="ordersTable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -40,6 +40,7 @@
                                         <td>{{ $room->id }}</td>
                                         <td>{{ $room->address }}</td>
                                         <td>
+                                            <a href="{{ route('rooms.show', $room->id) }}" class="btn btn-info">Просмотр</a>
                                             <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-warning">Редактировать</a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $room->id }}">Удалить</button>
                                         </td>

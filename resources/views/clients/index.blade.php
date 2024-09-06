@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card" class="dataTables_wrapper dt-bootstrap4">
                     <div class="card-header">
                         <h3 class="card-title">Клиенты</h3>
                         <div class="card-tools">
@@ -14,7 +14,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="clientsTable" class="table table-bordered table-hover">
+                        <table id="ordersTable" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -43,17 +43,6 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Фамилия</th>
-                                    <th>Имя</th>
-                                    <th>Отчество</th>
-                                    <th>Телефон</th>
-                                    <th>Email</th>
-                                    <th>Действия</th>
-                                </tr>
-                            </tfoot>
                         </table>
                     </div>
                     <!-- /.card-body -->
@@ -90,4 +79,21 @@
     </div>
 </div>
 @endforeach
+
 @endsection
+<!--
+@section('scripts')
+<script>
+    $(function () {
+        $('#clientsTable').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+@endsection -->
