@@ -16,15 +16,15 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="status">Статус</label>
-                                <input type="text" name="status" class="form-control" id="status" placeholder="Введите статус">
+                                <input type="text" name="status" class="form-control" id="status" placeholder="Введите статус" required>
                             </div>
                             <div class="form-group">
                                 <label for="order_time">Время заказа</label>
-                                <input type="datetime-local" name="order_time" class="form-control" id="order_time">
+                                <input type="datetime-local" name="order_time" class="form-control" id="order_time" required>
                             </div>
                             <div class="form-group">
                                 <label for="client_id">Клиент</label>
-                                <select name="client_id" class="form-control" id="client_id">
+                                <select name="client_id" class="form-control" id="client_id" required>
                                     @foreach($clients as $client)
                                         <option value="{{ $client->id }}">{{ $client->last_name }} {{ $client->first_name }}</option>
                                     @endforeach
@@ -32,15 +32,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="room_id">Комната</label>
-                                <select name="room_id" class="form-control" id="room_id">
+                                <select name="room_id" class="form-control" id="room_id" required>
                                     @foreach($rooms as $room)
                                         <option value="{{ $room->id }}">{{ $room->address }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="service_id">Услуга</label>
-                                <select name="service_id" class="form-control" id="service_id">
+                                <label for="service_ids">Услуги</label>
+                                <select name="service_ids[]" class="form-control" id="service_ids" multiple required>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
                                     @endforeach

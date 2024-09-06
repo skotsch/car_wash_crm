@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'status', 'order_time', 'client_id', 'room_id', 'service_id',
+        'status', 'order_time', 'client_id', 'room_id',
     ];
 
     public function client()
@@ -21,9 +23,9 @@ class Order extends Model
         return $this->belongsTo(Room::class);
     }
 
-    public function service()
+    public function services()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsToMany(Service::class, 'order_service');
     }
 
     public function employees()

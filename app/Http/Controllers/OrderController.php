@@ -31,10 +31,15 @@ class OrderController extends Controller
             'order_time' => 'required|date',
             'client_id' => 'required|exists:clients,id',
             'room_id' => 'required|exists:rooms,id',
-            'service_id' => 'required|exists:services,id',
+            'service_ids' => 'required|array',
+            'service_ids.*' => 'exists:services,id',
+            'employee_ids' => 'required|array',
+            'employee_ids.*' => 'exists:employees,id',
         ]);
 
-        Order::create($validatedData);
+        $order = Order::create($validatedData);
+        $order->services()->attach($validatedData['service_ids']);
+        $order->employees()->attach($validatedData['employee_ids']);
 
         return redirect()->route('orders.index')->with('success', 'Заказ успешно создан.');
     }
@@ -59,16 +64,22 @@ class OrderController extends Controller
             'order_time' => 'required|date',
             'client_id' => 'required|exists:clients,id',
             'room_id' => 'required|exists:rooms,id',
-            'service_id' => 'required|exists:services,id',
+            'service_ids' => 'required|array',
+            'service_ids.*' => 'exists:services,id',
+            'employee_ids' => 'required|array',
+            'employee_ids.*' => 'exists:employees,id',
         ]);
 
         $order->update($validatedData);
+        $order->services()->sync($validatedData['service_ids']);
+        $order->employees()->sync($validatedData['employee_ids']);
 
         return redirect()->route('orders.index')->with('success', 'Заказ успешно обновлен.');
     }
 
     public function destroy(Order $order)
     {
+        $order->services()->detach();
         $order->delete();
 
         return redirect()->route('orders.index')->with('success', 'Заказ успешно удален.');

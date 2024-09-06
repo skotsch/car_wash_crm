@@ -7,7 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name', 'price', 'description',
     ];
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_service');
+    }
 }

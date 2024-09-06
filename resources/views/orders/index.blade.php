@@ -22,7 +22,7 @@
                                     <th>Время заказа</th>
                                     <th>Клиент</th>
                                     <th>Комната</th>
-                                    <th>Услуга</th>
+                                    <th>Услуги</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -34,7 +34,13 @@
                                         <td>{{ $order->order_time }}</td>
                                         <td>{{ $order->client->last_name }} {{ $order->client->first_name }}</td>
                                         <td>{{ $order->room->address }}</td>
-                                        <td>{{ $order->service->name }}</td>
+                                        <td>
+                                            <ul>
+                                                @foreach($order->services as $service)
+                                                    <li>{{ $service->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
                                         <td>
                                             <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">Просмотр</a>
                                             <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Редактировать</a>
@@ -50,7 +56,7 @@
                                     <th>Время заказа</th>
                                     <th>Клиент</th>
                                     <th>Комната</th>
-                                    <th>Услуга</th>
+                                    <th>Услуги</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>
