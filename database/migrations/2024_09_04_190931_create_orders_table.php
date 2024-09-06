@@ -17,7 +17,6 @@ return new class extends Migration
             $table->timestamp('order_time');
             $table->foreignId('client_id')->constrained('clients');
             $table->foreignId('room_id')->constrained('rooms');
-            $table->foreignId('service_id')->constrained('services');
             $table->timestamps();
         });
     }

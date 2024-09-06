@@ -15,7 +15,7 @@ class TransactionFactory extends Factory
         return [
             'order_id' => Order::factory(),
             'amount' => $this->faker->randomFloat(2, 10, 100),
-            'payment_method' => $this->faker->randomElement(['credit_card', 'cash', 'bank_transfer']),
+            'payment_method' => $this->faker->randomElement(['Карта', 'Наличная', 'Онлайн']),
         ];
     }
 }

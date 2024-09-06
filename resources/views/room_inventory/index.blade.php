@@ -7,9 +7,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Инвентарь комнат</h3>
+                        <h3 class="card-title">Инвентарь в помещениях</h3>
                         <div class="card-tools">
-                            <a href="{{ route('room_inventory.create') }}" class="btn btn-primary">Создать инвентарь комнаты</a>
+                            <a href="{{ route('room_inventory.create') }}" class="btn btn-primary">Присвоить инвентарь помещению</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
@@ -18,7 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Комната</th>
+                                    <th>Помещение</th>
                                     <th>Инвентарь</th>
                                     <th>Количество</th>
                                     <th>Действия</th>
@@ -42,7 +42,7 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Комната</th>
+                                    <th>Помещение</th>
                                     <th>Инвентарь</th>
                                     <th>Количество</th>
                                     <th>Действия</th>

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+use App\Models\Client;
+use App\Models\Service;
+use App\Models\Employee;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $orders = Order::count();
+        $clients = Client::count();
+        $services = Service::count();
+        $employees = Employee::count();
+
+        $latestOrders = Order::latest()->take(5)->get();
+        $latestClients = Client::latest()->take(5)->get();
+
+        return view('home', compact('orders', 'clients', 'services', 'employees', 'latestOrders', 'latestClients'));
     }
 }

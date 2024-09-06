@@ -17,7 +17,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="status">Статус</label>
-                                <input type="text" name="status" class="form-control" id="status" value="{{ $order->status }}" required>
+                                <select name="status" class="form-control" id="status" required>
+                                    <option value="pending">В обработке</option>
+                                    <option value="completed">Завершен</option>
+                                    <option value="cancelled">Отменен</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="order_time">Время заказа</label>
@@ -41,9 +45,17 @@
                             </div>
                             <div class="form-group">
                                 <label for="service_ids">Услуги</label>
-                                <select name="service_ids[]" class="form-control" id="service_ids" multiple required>
+                                <select name="service_ids[]" class="form-control select2" id="service_ids" multiple="multiple" data-placeholder="Выберите услуги" style="width: 100%;" required>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}" {{ in_array($service->id, $order->services->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $service->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="employee_ids">Сотрудники</label>
+                                <select name="employee_ids[]" class="form-control select2" id="employee_ids" multiple="multiple" data-placeholder="Выберите сотрудников" style="width: 100%;" required>
+                                    @foreach($employees as $employee)
+                                        <option value="{{ $employee->id }}" {{ in_array($employee->id, $order->employees->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $employee->last_name }} {{ $employee->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -60,4 +72,12 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        $('.select2').select2();
+    });
+</script>
 @endsection

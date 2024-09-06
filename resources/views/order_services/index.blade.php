@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <div class="card" class="dataTables_wrapper dt-bootstrap4">
+                <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">Заказы</h3>
                         <div class="card-tools">
@@ -95,7 +95,5 @@
         </div>
     </div>
 </div>
-
-
 @endforeach
 @endsection

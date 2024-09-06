@@ -15,11 +15,10 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'status' => $this->faker->randomElement(['pending', 'completed', 'cancelled']),
+            'status' => $this->faker->randomElement(['В обработке', 'Завершён', 'Отменён']),
             'order_time' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'client_id' => Client::factory(),
             'room_id' => Room::factory(),
-            'service_id' => Service::factory(),
         ];
     }
 }

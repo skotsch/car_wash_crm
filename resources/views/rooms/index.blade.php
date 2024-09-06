@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Адреса моек</h3>
+                        <h3 class="card-title">Помещения</h3>
                         <div class="card-tools">
                             <a href="{{ route('rooms.create') }}" class="btn btn-primary">Добавить адрес</a>
                         </div>

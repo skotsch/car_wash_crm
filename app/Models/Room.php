@@ -12,4 +12,15 @@ class Room extends Model
     protected $fillable = [
         'address',
     ];
+
+    public function hasOrders()
+    {
+        return $this->orders()->exists();
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

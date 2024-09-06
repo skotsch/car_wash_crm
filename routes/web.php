@@ -11,6 +11,8 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\RoomInventoryController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderServiceController;
+use App\Http\Controllers\EmployeeOrderController;
 
 Auth::routes();
 
@@ -25,4 +27,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('inventory', InventoryController::class);
     Route::resource('room_inventory', RoomInventoryController::class);
     Route::resource('transactions', TransactionController::class);
+    Route::resource('order_services', OrderServiceController::class);
+    Route::resource('employee_orders', EmployeeOrderController::class);
 });

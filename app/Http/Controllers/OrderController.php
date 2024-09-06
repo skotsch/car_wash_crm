@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Client;
 use App\Models\Room;
 use App\Models\Service;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -16,12 +17,13 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function create()
+        public function create()
     {
         $clients = Client::all();
         $rooms = Room::all();
         $services = Service::all();
-        return view('orders.create', compact('clients', 'rooms', 'services'));
+        $employees = Employee::all(); // Добавляем эту строку
+        return view('orders.create', compact('clients', 'rooms', 'services', 'employees'));
     }
 
     public function store(Request $request)
@@ -54,7 +56,8 @@ class OrderController extends Controller
         $clients = Client::all();
         $rooms = Room::all();
         $services = Service::all();
-        return view('orders.edit', compact('order', 'clients', 'rooms', 'services'));
+        $employees = Employee::all(); // Добавляем эту строку
+        return view('orders.edit', compact('order', 'clients', 'rooms', 'services', 'employees'));
     }
 
     public function update(Request $request, Order $order)

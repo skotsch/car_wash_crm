@@ -16,7 +16,14 @@
                         <p><strong>Время заказа:</strong> {{ $order->order_time }}</p>
                         <p><strong>Клиент:</strong> {{ $order->client->last_name }} {{ $order->client->first_name }}</p>
                         <p><strong>Комната:</strong> {{ $order->room->address }}</p>
-                        <p><strong>Услуга:</strong> {{ $order->service->name }}</p>
+                        <p><strong>Услуга:</strong>
+                            <ul>
+                                @foreach($order->services as $service)
+                                    <li>{{ $service->name }}</li>
+                                @endforeach
+
+                            </ul>
+                        </p>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

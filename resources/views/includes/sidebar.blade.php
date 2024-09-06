@@ -2,7 +2,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-
         <span class="brand-text font-weight-light">CarWashCRM</span>
     </a>
 
@@ -11,7 +10,7 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Поиск" aria-label="Поиск">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -24,20 +23,19 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
-                <!-- Clients -->
+                <!-- Dashboard -->
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('home') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard</p>
+                        <p>Панель управления</p>
                     </a>
                 </li>
-
 
                 <!-- Clients -->
                 <li class="nav-item">
                     <a href="{{ route('clients.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>Clients</p>
+                        <p>Клиенты</p>
                     </a>
                 </li>
 
@@ -45,7 +43,7 @@
                 <li class="nav-item">
                     <a href="{{ route('orders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>Orders</p>
+                        <p>Заказы</p>
                     </a>
                 </li>
 
@@ -53,7 +51,7 @@
                 <li class="nav-item">
                     <a href="{{ route('services.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
-                        <p>Services</p>
+                        <p>Услуги</p>
                     </a>
                 </li>
 
@@ -61,7 +59,7 @@
                 <li class="nav-item">
                     <a href="{{ route('employees.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
-                        <p>Employees</p>
+                        <p>Сотрудники</p>
                     </a>
                 </li>
 
@@ -69,7 +67,7 @@
                 <li class="nav-item">
                     <a href="{{ route('rooms.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-door-open"></i>
-                        <p>Rooms</p>
+                        <p>Помещения</p>
                     </a>
                 </li>
 
@@ -77,7 +75,7 @@
                 <li class="nav-item">
                     <a href="{{ route('inventory.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-boxes"></i>
-                        <p>Inventory</p>
+                        <p>Инвентарь</p>
                     </a>
                 </li>
 
@@ -85,7 +83,7 @@
                 <li class="nav-item">
                     <a href="{{ route('room_inventory.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-warehouse"></i>
-                        <p>Room Inventory</p>
+                        <p>Инвентарь в помещениях</p>
                     </a>
                 </li>
 
@@ -93,7 +91,23 @@
                 <li class="nav-item">
                     <a href="{{ route('transactions.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-money-bill-wave"></i>
-                        <p>Transactions</p>
+                        <p>Транзакции</p>
+                    </a>
+                </li>
+
+                <!-- Order Services -->
+                <li class="nav-item">
+                    <a href="{{ route('order_services.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-cogs"></i>
+                        <p>Услуги заказов</p>
+                    </a>
+                </li>
+
+                <!-- Employee Orders -->
+                <li class="nav-item">
+                    <a href="{{ route('employee_orders.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-tie"></i>
+                        <p>Заказы сотрудников</p>
                     </a>
                 </li>
             </ul>
