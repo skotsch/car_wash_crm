@@ -28,8 +28,12 @@
                                 @foreach($roomInventories as $roomInventory)
                                     <tr>
                                         <td>{{ $roomInventory->id }}</td>
-                                        <td>{{ $roomInventory->room->address }}</td>
-                                        <td>{{ $roomInventory->inventory->name }}</td>
+                                        <td>
+                                            <a href="{{ route('rooms.show', $roomInventory->room->id) }}">{{ $roomInventory->room->address }}</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('inventory.show', $roomInventory->inventory->id) }}">{{ $roomInventory->inventory->name }}</a>
+                                        </td>
                                         <td>{{ $roomInventory->quantity }}</td>
                                         <td>
                                             <a href="{{ route('room_inventory.show', $roomInventory->id) }}" class="btn btn-info">Просмотр</a>
