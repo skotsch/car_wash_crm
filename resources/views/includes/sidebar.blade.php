@@ -83,7 +83,7 @@
                 <li class="nav-item">
                     <a href="{{ route('room_inventory.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-warehouse"></i>
-                        <p>Инвентарь в помещениях</p>
+                        <p>Инвентарь - помещения</p>
                     </a>
                 </li>
 
@@ -99,7 +99,7 @@
                 <li class="nav-item">
                     <a href="{{ route('order_services.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
-                        <p>Услуги заказов</p>
+                        <p>Услуги - заказы</p>
                     </a>
                 </li>
 
@@ -107,7 +107,7 @@
                 <li class="nav-item">
                     <a href="{{ route('employee_orders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-user-tie"></i>
-                        <p>Заказы сотрудников</p>
+                        <p>Заказы - сотрудники</p>
                     </a>
                 </li>
             </ul>
