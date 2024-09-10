@@ -16,7 +16,7 @@
                         @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="employee_id">Employee</label>
+                                <label for="employee_id">Сотрудник</label>
                                 <select name="employee_id" class="form-control" required>
                                     @foreach($employees as $employee)
                                         <option value="{{ $employee->id }}" {{ $employee->id == $employeeOrder->employee_id ? 'selected' : '' }}>{{ $employee->name }}</option>
@@ -24,7 +24,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="order_id">Order</label>
+                                <label for="order_id">Заказ</label>
                                 <select name="order_id" class="form-control" required>
                                     @foreach($orders as $order)
                                         <option value="{{ $order->id }}" {{ $order->id == $employeeOrder->order_id ? 'selected' : '' }}>{{ $order->id }}</option>

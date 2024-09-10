@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Название</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Введите название">
+                                <input type="text" name="name" class="form-control" id="name" placeholder="Введите название" required>
                             </div>
                             <div class="form-group">
                                 <label for="description">Описание</label>
@@ -24,11 +24,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="type">Тип</label>
-                                <input type="text" name="type" class="form-control" id="type" placeholder="Введите тип">
+                                <input type="text" name="type" class="form-control" id="type" placeholder="Введите тип" required>
                             </div>
                             <div class="form-group">
                                 <label for="price">Цена</label>
-                                <input type="text" name="price" class="form-control" id="price" placeholder="Введите цену">
+                                <input type="text" name="price" class="form-control" id="price" placeholder="Введите цену" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

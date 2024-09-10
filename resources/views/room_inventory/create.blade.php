@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="room_id">Помещение</label>
-                                <select name="room_id" class="form-control" id="room_id">
+                                <select name="room_id" class="form-control" id="room_id" required>
                                     @foreach($rooms as $room)
                                         <option value="{{ $room->id }}">{{ $room->address }}</option>
                                     @endforeach
@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="inventory_id">Инвентарь</label>
-                                <select name="inventory_id" class="form-control" id="inventory_id">
+                                <select name="inventory_id" class="form-control" id="inventory_id" required>
                                     @foreach($inventories as $inventory)
                                         <option value="{{ $inventory->id }}">{{ $inventory->name }}</option>
                                     @endforeach
@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="quantity">Количество</label>
-                                <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Введите количество">
+                                <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Введите количество" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

@@ -24,10 +24,6 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="amount">Сумма</label>
-                                <input type="text" name="amount" class="form-control" id="amount" value="{{ $transaction->amount }}">
-                            </div>
-                            <div class="form-group">
                                 <label for="payment_method">Метод оплаты</label>
                                 <input type="text" name="payment_method" class="form-control" id="payment_method" value="{{ $transaction->payment_method }}">
                             </div>

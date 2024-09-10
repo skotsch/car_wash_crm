@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="quantity">Количество</label>
-                                <input type="number" name="quantity" class="form-control" id="quantity" value="{{ $roomInventory->quantity }}">
+                                <input type="number" name="quantity" class="form-control" id="quantity" value="{{ $roomInventory->quantity }}" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

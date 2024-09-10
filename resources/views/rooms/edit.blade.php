@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="address">Адрес</label>
-                                <input type="text" name="address" class="form-control" id="address" value="{{ $room->address }}">
+                                <input type="text" name="address" class="form-control" id="address" value="{{ $room->address }}" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

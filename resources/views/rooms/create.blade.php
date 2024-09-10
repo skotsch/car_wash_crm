@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="address">Адрес</label>
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Введите адрес">
+                                <input type="text" name="address" class="form-control" id="address" placeholder="Введите адрес" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

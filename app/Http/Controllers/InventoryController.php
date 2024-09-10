@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventory;
 use Illuminate\Http\Request;
+use App\Models\RoomInventory;
 
 class InventoryController extends Controller
 {
@@ -58,6 +59,10 @@ class InventoryController extends Controller
 
     public function destroy(Inventory $inventory)
     {
+        if (RoomInventory::where('inventory_id', $inventory->id)->exists()) {
+            return redirect()->route('inventory.index')->with('error', 'Невозможно удалить инвентарь, так как на него есть ссылки в комнатах.');
+        }
+
         $inventory->delete();
 
         return redirect()->route('inventory.index')->with('success', 'Инвентарь успешно удален.');

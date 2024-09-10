@@ -22,7 +22,7 @@ class OrderController extends Controller
         $clients = Client::all();
         $rooms = Room::all();
         $services = Service::all();
-        $employees = Employee::all(); // Добавляем эту строку
+        $employees = Employee::all();
         return view('orders.create', compact('clients', 'rooms', 'services', 'employees'));
     }
 

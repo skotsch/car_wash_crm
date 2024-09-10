@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class RoomController extends Controller
 {
@@ -52,7 +53,7 @@ class RoomController extends Controller
 
     public function destroy(Room $room)
     {
-        if ($room->hasOrders()) {
+        if ($room->orders()->exists()) {
             return redirect()->route('rooms.index')->with('error', 'Невозможно удалить помещение, так как на него есть ссылки в заказах.');
         }
 

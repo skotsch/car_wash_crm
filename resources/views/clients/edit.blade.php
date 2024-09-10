@@ -17,11 +17,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="last_name">Фамилия</label>
-                                <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $client->last_name }}">
+                                <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $client->last_name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="first_name">Имя</label>
-                                <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $client->first_name }}">
+                                <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $client->first_name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="middle_name">Отчество</label>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone">Телефон</label>
-                                <input type="text" name="phone" class="form-control" id="phone" value="{{ $client->phone }}">
+                                <input type="text" name="phone" class="form-control" id="phone" value="{{ $client->phone }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class EmployeeController extends Controller
 {
@@ -62,6 +63,10 @@ class EmployeeController extends Controller
 
     public function destroy(Employee $employee)
     {
+        if ($employee->orders()->exists()) {
+            return redirect()->route('employees.index')->with('error', 'Невозможно удалить сотрудника, так как на него есть ссылки в заказах.');
+        }
+
         $employee->delete();
 
         return redirect()->route('employees.index')->with('success', 'Сотрудник успешно удален.');

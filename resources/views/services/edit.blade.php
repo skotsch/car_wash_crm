@@ -17,11 +17,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Название</label>
-                                <input type="text" name="name" class="form-control" id="name" value="{{ $service->name }}">
+                                <input type="text" name="name" class="form-control" id="name" value="{{ $service->name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="price">Цена</label>
-                                <input type="text" name="price" class="form-control" id="price" value="{{ $service->price }}">
+                                <input type="text" name="price" class="form-control" id="price" value="{{ $service->price }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="description">Описание</label>

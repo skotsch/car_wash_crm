@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Service;
 use Illuminate\Http\Request;
+use App\Models\OrderService;
 
 class ServiceController extends Controller
 {
@@ -56,6 +57,10 @@ class ServiceController extends Controller
 
     public function destroy(Service $service)
     {
+        if (OrderService::where('service_id', $service->id)->exists()) {
+            return redirect()->route('services.index')->with('error', 'Невозможно удалить услугу, так как на нее есть ссылки в заказах.');
+        }
+
         $service->delete();
 
         return redirect()->route('services.index')->with('success', 'Услуга успешно удалена.');

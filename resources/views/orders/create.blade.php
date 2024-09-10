@@ -35,7 +35,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="room_id">Комната</label>
+                                <label for="room_id">Помещение</label>
                                 <select name="room_id" class="form-control" id="room_id" required>
                                     @foreach($rooms as $room)
                                         <option value="{{ $room->id }}">{{ $room->address }}</option>

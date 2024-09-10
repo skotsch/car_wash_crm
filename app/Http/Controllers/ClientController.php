@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Order;
 
 class ClientController extends Controller
 {
@@ -20,8 +20,17 @@ class ClientController extends Controller
 
     public function store(Request $request)
     {
-        Client::create($request->all());
-        return redirect()->route('clients.index');
+        $validatedData = $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_name' => 'nullable',
+            'phone' => 'required',
+            'email' => 'nullable|email',
+        ]);
+
+        Client::create($validatedData);
+
+        return redirect()->route('clients.index')->with('success', 'Клиент успешно создан.');
     }
 
     public function show(Client $client)
@@ -36,13 +45,27 @@ class ClientController extends Controller
 
     public function update(Request $request, Client $client)
     {
-        $client->update($request->all());
-        return redirect()->route('clients.index');
+        $validatedData = $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_name' => 'nullable',
+            'phone' => 'required',
+            'email' => 'nullable|email',
+        ]);
+
+        $client->update($validatedData);
+
+        return redirect()->route('clients.index')->with('success', 'Клиент успешно обновлен.');
     }
 
     public function destroy(Client $client)
     {
+        if ($client->orders()->exists()) {
+            return redirect()->route('clients.index')->with('error', 'Невозможно удалить клиента, так как на него есть ссылки в заказах.');
+        }
+
         $client->delete();
-        return redirect()->route('clients.index');
+
+        return redirect()->route('clients.index')->with('success', 'Клиент успешно удален.');
     }
 }

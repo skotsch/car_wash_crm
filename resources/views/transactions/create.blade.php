@@ -16,15 +16,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="order_id">Заказ</label>
-                                <select name="order_id" class="form-control" id="order_id">
+                                <select name="order_id" class="form-control" id="order_id" required>
                                     @foreach($orders as $order)
                                         <option value="{{ $order->id }}">{{ $order->id }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="amount">Сумма</label>
-                                <input type="text" name="amount" class="form-control" id="amount" placeholder="Введите сумму">
                             </div>
                             <div class="form-group">
                                 <label for="payment_method">Метод оплаты</label>

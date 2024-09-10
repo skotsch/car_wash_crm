@@ -17,7 +17,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Название</label>
-                                <input type="text" name="name" class="form-control" id="name" value="{{ $inventory->name }}">
+                                <input type="text" name="name" class="form-control" id="name" value="{{ $inventory->name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="description">Описание</label>
@@ -25,11 +25,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="type">Тип</label>
-                                <input type="text" name="type" class="form-control" id="type" value="{{ $inventory->type }}">
+                                <input type="text" name="type" class="form-control" id="type" value="{{ $inventory->type }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="price">Цена</label>
-                                <input type="text" name="price" class="form-control" id="price" value="{{ $inventory->price }}">
+                                <input type="text" name="price" class="form-control" id="price" value="{{ $inventory->price }}" required>
                             </div>
                         </div>
                         <!-- /.card-body -->

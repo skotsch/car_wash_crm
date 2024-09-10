@@ -17,11 +17,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="last_name">Фамилия</label>
-                                <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $employee->last_name }}">
+                                <input type="text" name="last_name" class="form-control" id="last_name" value="{{ $employee->last_name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="first_name">Имя</label>
-                                <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $employee->first_name }}">
+                                <input type="text" name="first_name" class="form-control" id="first_name" value="{{ $employee->first_name }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="patronymic">Отчество</label>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone">Телефон</label>
-                                <input type="text" name="phone" class="form-control" id="phone" value="{{ $employee->phone }}">
+                                <input type="text" name="phone" class="form-control" id="phone" value="{{ $employee->phone }}" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="position">Должность</label>
-                                <input type="text" name="position" class="form-control" id="position" value="{{ $employee->position }}">
+                                <input type="text" name="position" class="form-control" id="position" value="{{ $employee->position }}" required>
                             </div>
                         </div>
                         <!-- /.card-body -->
