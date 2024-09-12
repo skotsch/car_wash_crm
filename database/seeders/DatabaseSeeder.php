@@ -14,11 +14,11 @@ class DatabaseSeeder extends Seeder
             RoomsTableSeeder::class,
             ServicesTableSeeder::class,
             InventoryTableSeeder::class,
-            // OrdersTableSeeder::class,
-            TransactionsTableSeeder::class,
+            OrdersTableSeeder::class,
             OrderServiceTableSeeder::class,
             EmployeeOrderTableSeeder::class,
             RoomInventoryTableSeeder::class,
+            TransactionsTableSeeder::class,
         ]);
     }
 }

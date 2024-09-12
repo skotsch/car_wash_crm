@@ -12,16 +12,23 @@ class TransactionFactory extends Factory
 
     public function definition()
     {
-        // Создаем заказ с услугами
-        $order = Order::factory()->hasServices(3)->create();
+        // Получаем все существующие заказы
+        $orders = Order::all();
 
-        // Рассчитываем общую сумму заказа
-        $totalAmount = $order->services->sum('price');
+        // Выбираем случайный заказ
+        $order = $orders->random();
+        foreach($orders as $order)
+        {
+            // Рассчитываем общую сумму заказа
+            $totalAmount = $order->services->sum('price');
 
-        return [
-            'order_id' => $order->id,
-            'amount' => $totalAmount,
-            'payment_method' => $this->faker->randomElement(['Карта', 'Наличная', 'Онлайн']),
-        ];
+            return [
+                'order_id' => $order->id,
+                'amount' => $totalAmount,
+                'payment_method' => $this->faker->randomElement(['Наличные', 'Карта', 'Перевод']),
+            ];
+        }
+
+
     }
 }

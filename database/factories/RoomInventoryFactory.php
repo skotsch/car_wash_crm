@@ -13,9 +13,11 @@ class RoomInventoryFactory extends Factory
 
     public function definition()
     {
+        $rooms = Room::pluck('id')->toArray();
+        $inventories = Inventory::pluck('id')->toArray();
         return [
-            'room_id' => Room::factory(),
-            'inventory_id' => Inventory::factory(),
+            'room_id' => $this->faker->randomElement($rooms),
+            'inventory_id' => $this->faker->randomElement($inventories),
             'quantity' => $this->faker->numberBetween(1, 10),
         ];
     }
