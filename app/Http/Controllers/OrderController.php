@@ -48,6 +48,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
+        $totalAmount = $order->services->sum('price');
         return view('orders.show', compact('order'));
     }
 

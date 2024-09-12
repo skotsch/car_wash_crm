@@ -14,16 +14,24 @@
                         <p><strong>ID:</strong> {{ $order->id }}</p>
                         <p><strong>Статус:</strong> {{ $order->status }}</p>
                         <p><strong>Время заказа:</strong> {{ $order->order_time }}</p>
-                        <p><strong>Клиент:</strong> {{ $order->client->last_name }} {{ $order->client->first_name }}</p>
-                        <p><strong>Комната:</strong> {{ $order->room->address }}</p>
-                        <p><strong>Услуга:</strong>
+                        <p><strong>Клиент:</strong><a href="{{ route('clients.show', $order->client->id) }}"> {{ $order->client->first_name }}</a></p>
+                        <p><strong>Комната:</strong><a href="{{ route('rooms.show', $order->room->id) }}"> {{ $order->room->address }}</p></a>
+                        <p><strong>Услуги:</strong>
                             <ul>
                                 @foreach($order->services as $service)
-                                    <li>{{ $service->name }}</li>
+                                    <li><a href="{{ route('services.show', $service->id) }}">{{ $service->name }}</a></li>
                                 @endforeach
-
                             </ul>
                         </p>
+                        <p><strong>Сотрудники:</strong>
+                            <ul>
+                                @foreach($order->employees as $employee)
+                                    <li><a href="{{ route('employees.show', $employee->id) }}">{{ $employee->last_name }} {{ $employee->first_name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </p>
+                        <p><strong>Сумма:</strong> {{ $order->transaction->amount }}</p>
+                        <p><strong>Метод оплаты:</strong> {{ $order->transaction->payment_method }}</p>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">

@@ -24,7 +24,8 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        <table id="ordersTable" class="table table-bordered table-hover">
+                        <!-- <table id="ordersTable" class="table table-bordered table-hover"> -->
+                        <table id="ordersTable" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -33,6 +34,7 @@
                                     <th>Клиент</th>
                                     <th>Помещение</th>
                                     <th>Услуги</th>
+                                    <th>Сотрудники</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -52,6 +54,13 @@
                                             </ul>
                                         </td>
                                         <td>
+                                            <ul>
+                                                @foreach($order->employees as $employee)
+                                                    <li>{{ $employee->last_name }} {{ $employee->first_name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td>
                                             <a href="{{ route('orders.show', $order->id) }}" class="btn btn-info">Просмотр</a>
                                             <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-warning">Редактировать</a>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal{{ $order->id }}">Удалить</button>
@@ -67,6 +76,7 @@
                                     <th>Клиент</th>
                                     <th>Помещение</th>
                                     <th>Услуги</th>
+                                    <th>Сотрудники</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>

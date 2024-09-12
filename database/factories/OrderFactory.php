@@ -21,4 +21,13 @@ class OrderFactory extends Factory
             'room_id' => Room::factory(),
         ];
     }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Order $order) {
+            // Привязываем случайные услуги к заказу
+            $services = Service::inRandomOrder()->limit(3)->get();
+            $order->services()->attach($services->pluck('id')->toArray());
+        });
+    }
 }

@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
             RoomsTableSeeder::class,
             ServicesTableSeeder::class,
             InventoryTableSeeder::class,
-            OrdersTableSeeder::class,
+            // OrdersTableSeeder::class,
             TransactionsTableSeeder::class,
             OrderServiceTableSeeder::class,
             EmployeeOrderTableSeeder::class,

@@ -32,4 +32,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Employee::class, 'employee_order');
     }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
+    }
 }
