@@ -58,6 +58,14 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="payment_method">Метод оплаты</label>
+                                <select name="payment_method" class="form-control" id="payment_method" required>
+                                    <option value="Наличные">Наличные</option>
+                                    <option value="Карта">Карта</option>
+                                    <option value="Перевод">Перевод</option>
+                                </select>
+                            </div>
                         </div>
                         <!-- /.card-body -->
 

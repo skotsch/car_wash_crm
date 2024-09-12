@@ -18,7 +18,7 @@
                                 <label for="employee_id">Employee</label>
                                 <select name="employee_id" class="form-control" required>
                                     @foreach($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                                        <option value="{{ $employee->id }}">{{ $employee->last_name }} {{ $employee->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -26,7 +26,7 @@
                                 <label for="order_id">Order</label>
                                 <select name="order_id" class="form-control" required>
                                     @foreach($orders as $order)
-                                        <option value="{{ $order->id }}">{{ $order->id }}</option>
+                                        <option value="{{ $order->id }}">{{ $order->order_time }} {{ $order->client->last_name }} {{ $order->client->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

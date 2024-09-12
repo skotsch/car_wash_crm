@@ -13,11 +13,11 @@
                     </div>
                     <div class="card-body">
                         <p><strong>ID:</strong> {{ $employeeOrder->id }}</p>
-                        <p><strong>Employee ID:</strong>
-                            <a href="{{ route('employees.show', $employeeOrder->employee_id) }}">{{ $employeeOrder->employee_id }}</a>
+                        <p><strong>Сотрудник:</strong>
+                            <a href="{{ route('employees.show', $employeeOrder->employee_id) }}">{{ $employeeOrder->employee->last_name }} {{ $employeeOrder->employee->first_name }}</a>
                         </p>
-                        <p><strong>Order ID:</strong>
-                            <a href="{{ route('orders.show', $employeeOrder->order_id) }}">{{ $employeeOrder->order_id }}</a>
+                        <p><strong>Заказ:</strong>
+                            <a href="{{ route('orders.show', $employeeOrder->order_id) }}">{{ $employeeOrder->order->order_time }} {{ $employeeOrder->order->client->last_name }} {{ $employeeOrder->order->client->first_name }}</a>
                         </p>
                     </div>
                     <div class="card-footer">

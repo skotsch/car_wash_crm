@@ -12,7 +12,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <p><strong>ID:</strong> {{ $transaction->id }}</p>
-                        <p><strong>Заказ:</strong> {{ $transaction->order->id }}</p>
+                        <p><strong>Заказ:</strong><a href="{{ route('orders.show', $transaction->order->id) }}"> {{ $transaction->order->order_time }} {{ $transaction->order->client->last_name }} {{ $transaction->order->client->first_name }}</a></p>
                         <p><strong>Сумма:</strong> {{ $transaction->amount }}</p>
                         <p><strong>Метод оплаты:</strong> {{ $transaction->payment_method }}</p>
                     </div>

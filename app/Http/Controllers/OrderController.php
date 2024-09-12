@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Models\Room;
 use App\Models\Service;
 use App\Models\Employee;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -37,11 +38,20 @@ class OrderController extends Controller
             'service_ids.*' => 'exists:services,id',
             'employee_ids' => 'required|array',
             'employee_ids.*' => 'exists:employees,id',
+            'payment_method' => 'required',
         ]);
 
         $order = Order::create($validatedData);
         $order->services()->attach($validatedData['service_ids']);
         $order->employees()->attach($validatedData['employee_ids']);
+
+        // Создание транзакции
+        $totalAmount = $order->services->sum('price');
+        Transaction::create([
+            'order_id' => $order->id,
+            'amount' => $totalAmount,
+            'payment_method' => $validatedData['payment_method'],
+        ]);
 
         return redirect()->route('orders.index')->with('success', 'Заказ успешно создан.');
     }
@@ -72,11 +82,27 @@ class OrderController extends Controller
             'service_ids.*' => 'exists:services,id',
             'employee_ids' => 'required|array',
             'employee_ids.*' => 'exists:employees,id',
+            'payment_method' => 'required',
         ]);
 
         $order->update($validatedData);
         $order->services()->sync($validatedData['service_ids']);
         $order->employees()->sync($validatedData['employee_ids']);
+
+        // Обновление транзакции
+        $totalAmount = $order->services->sum('price');
+        if ($order->transaction) {
+            $order->transaction->update([
+                'amount' => $totalAmount,
+                'payment_method' => $validatedData['payment_method'],
+            ]);
+        } else {
+            Transaction::create([
+                'order_id' => $order->id,
+                'amount' => $totalAmount,
+                'payment_method' => $validatedData['payment_method'],
+            ]);
+        }
 
         return redirect()->route('orders.index')->with('success', 'Заказ успешно обновлен.');
     }

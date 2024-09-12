@@ -12,8 +12,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <p><strong>ID:</strong> {{ $roomInventory->id }}</p>
-                        <p><strong>Комната:</strong> {{ $roomInventory->room->address }}</p>
-                        <p><strong>Инвентарь:</strong> {{ $roomInventory->inventory->name }}</p>
+                        <p><strong>Комната:</strong><a href="{{ route('rooms.show', $roomInventory->room->id) }}"> {{ $roomInventory->room->address }}</a></p>
+                        <p><strong>Инвентарь:</strong><a href="{{ route('inventory.show', $roomInventory->inventory->id) }}"> {{ $roomInventory->inventory->name }}</a></p>
                         <p><strong>Количество:</strong> {{ $roomInventory->quantity }}</p>
                     </div>
                     <!-- /.card-body -->

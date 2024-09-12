@@ -19,7 +19,7 @@
                                 <label for="employee_id">Сотрудник</label>
                                 <select name="employee_id" class="form-control" required>
                                     @foreach($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ $employee->id == $employeeOrder->employee_id ? 'selected' : '' }}>{{ $employee->name }}</option>
+                                        <option value="{{ $employee->id }}" {{ $employee->id == $employeeOrder->employee_id ? 'selected' : '' }}>{{ $employee->last_name }} {{ $employee->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -27,7 +27,7 @@
                                 <label for="order_id">Заказ</label>
                                 <select name="order_id" class="form-control" required>
                                     @foreach($orders as $order)
-                                        <option value="{{ $order->id }}" {{ $order->id == $employeeOrder->order_id ? 'selected' : '' }}>{{ $order->id }}</option>
+                                        <option value="{{ $order->id }}" {{ $order->id == $employeeOrder->order_id ? 'selected' : '' }}>{{ $order->order_time }} {{ $order->client->last_name }} {{ $order->client->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>

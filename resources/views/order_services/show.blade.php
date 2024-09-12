@@ -11,8 +11,8 @@
                     </div>
                     <div class="card-body">
                         <p><strong>ID:</strong> {{ $orderService->id }}</p>
-                        <p><strong>Order ID:</strong> {{ $orderService->order_id }}</p>
-                        <p><strong>Service ID:</strong> {{ $orderService->service_id }}</p>
+                        <p><strong>Заказ:</strong> <a href="{{ route ('orders.show', $orderService->order_id) }}">{{ $orderService->order->order_time }} {{ $orderService->order->client->last_name }} {{ $orderService->order->client->first_name }}</a></p>
+                        <p><strong>Услуга:</strong> <a href="{{ route ('services.show', $orderService->service_id) }}">{{ $orderService->service->name }}</a></p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('order_services.index') }}" class="btn btn-secondary">Назад</a>

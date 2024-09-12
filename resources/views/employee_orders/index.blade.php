@@ -30,8 +30,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Employee ID</th>
-                                    <th>Order ID</th>
+                                    <th>Сотрудник</th>
+                                    <th>Заказ</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -40,10 +40,10 @@
                                     <tr>
                                         <td>{{ $employeeOrder->id }}</td>
                                         <td>
-                                            <a href="{{ route('employees.show', $employeeOrder->employee_id) }}">{{ $employeeOrder->employee_id }}</a>
+                                            <a href="{{ route('employees.show', $employeeOrder->employee_id) }}">{{ $employeeOrder->employee->last_name }} {{ $employeeOrder->employee->first_name }}</a>
                                         </td>
                                         <td>
-                                            <a href="{{ route('orders.show', $employeeOrder->order_id) }}">{{ $employeeOrder->order_id }}</a>
+                                            <a href="{{ route('orders.show', $employeeOrder->order_id) }}">{{ $employeeOrder->order->order_time }} {{ $employeeOrder->order->client->last_name }} {{ $employeeOrder->order->client->first_name }}</a>
                                         </td>
                                         <td>
                                             <a href="{{ route('employee_orders.show', $employeeOrder->id) }}" class="btn btn-info">Просмотр</a>
@@ -56,8 +56,8 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Employee ID</th>
-                                    <th>Order ID</th>
+                                    <th>Сотрудник</th>
+                                    <th>Заказ</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>

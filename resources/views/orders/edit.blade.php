@@ -36,7 +36,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="room_id">Комната</label>
+                                <label for="room_id">Помещение</label>
                                 <select name="room_id" class="form-control" id="room_id" required>
                                     @foreach($rooms as $room)
                                         <option value="{{ $room->id }}" {{ $room->id == $order->room_id ? 'selected' : '' }}>{{ $room->address }}</option>
@@ -57,6 +57,14 @@
                                     @foreach($employees as $employee)
                                         <option value="{{ $employee->id }}" {{ in_array($employee->id, $order->employees->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $employee->last_name }} {{ $employee->first_name }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="payment_method">Метод оплаты</label>
+                                <select name="payment_method" class="form-control" id="payment_method" required>
+                                    <option value="Наличные">Наличные</option>
+                                    <option value="Карта">Карта</option>
+                                    <option value="Перевод">Перевод</option>
                                 </select>
                             </div>
                         </div>

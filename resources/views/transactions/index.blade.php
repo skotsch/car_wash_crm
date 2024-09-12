@@ -38,7 +38,9 @@
                                 @foreach($transactions as $transaction)
                                     <tr>
                                         <td>{{ $transaction->id }}</td>
-                                        <td>{{ $transaction->order->id }}</td>
+                                        <td>
+                                            <a href="{{ route('orders.show', $transaction->order_id) }}">{{ $transaction->order->order_time }} {{ $transaction->order->client->last_name }} {{ $transaction->order->client->first_name }}</a>
+                                        </td>
                                         <td>{{ $transaction->amount }}</td>
                                         <td>{{ $transaction->payment_method }}</td>
                                         <td>

@@ -19,13 +19,17 @@
                                 <label for="order_id">Заказ</label>
                                 <select name="order_id" class="form-control" id="order_id">
                                     @foreach($orders as $order)
-                                        <option value="{{ $order->id }}" {{ $order->id == $transaction->order_id ? 'selected' : '' }}>{{ $order->id }}</option>
+                                        <option value="{{ $order->id }}" {{ $order->id == $transaction->order_id ? 'selected' : '' }}>{{ $transaction->order->order_time }} {{ $transaction->order->client->last_name }} {{ $transaction->order->client->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="payment_method">Метод оплаты</label>
-                                <input type="text" name="payment_method" class="form-control" id="payment_method" value="{{ $transaction->payment_method }}">
+                                <select name="payment_method" class="form-control" id="payment_method" required>
+                                    <option value="Наличные">Наличные</option>
+                                    <option value="Карта">Карта</option>
+                                    <option value="Перевод">Перевод</option>
+                                </select>
                             </div>
                         </div>
                         <!-- /.card-body -->

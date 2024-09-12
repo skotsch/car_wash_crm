@@ -30,8 +30,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Order ID</th>
-                                    <th>Service ID</th>
+                                    <th>Заказ</th>
+                                    <th>Услуга</th>
                                     <th>Действия</th>
                                 </tr>
                             </thead>
@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>{{ $orderService->id }}</td>
                                         <td>
-                                            <a href="{{ route('orders.show', $orderService->order_id) }}">{{ $orderService->order_id }}</a>
+                                            <a href="{{ route('orders.show', $orderService->order_id) }}">{{ $orderService->order->order_time }} {{ $orderService->order->client->last_name }} {{ $orderService->order->client->first_name }}</a>
                                         </td>
                                         <td>
                                             <a href="{{ route('services.show', $orderService->service_id) }}">{{ $orderService->service->name }}</a>
@@ -56,8 +56,8 @@
                             <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Order ID</th>
-                                    <th>Service ID</th>
+                                    <th>Заказ</th>
+                                    <th>Услуга</th>
                                     <th>Действия</th>
                                 </tr>
                             </tfoot>

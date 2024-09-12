@@ -13,15 +13,15 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="order_id">Order</label>
+                                <label for="order_id">Заказ</label>
                                 <select name="order_id" class="form-control" required>
                                     @foreach($orders as $order)
-                                        <option value="{{ $order->id }}">{{ $order->id }}</option>
+                                        <option value="{{ $order->id }}">{{ $order->order_time }} {{ $order->client->last_name }} {{ $order->client->first_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="service_id">Service</label>
+                                <label for="service_id">Услуга</label>
                                 <select name="service_id" class="form-control" required>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}">{{ $service->name }}</option>
